@@ -159,7 +159,7 @@ checkBrowsers(paths.appPath, isInteractive)
       console.log(chalk.cyan('Starting the development server...\n'));
       // Run the app
       const appPackage = require(paths.appPackageJson);
-      appPackage.main = urls.localUrlForBrowser;
+      appPackage.main = urls.localUrlForBrowser + (appPackage?.customNwMain || '');
       appPackage['node-remote'] = '*://*/*';
       fs.outputJsonSync(`${paths.appBuild}/package.json`, appPackage, {
         spaces: 2,
